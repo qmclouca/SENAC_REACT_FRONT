@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchGitHubUser } from "../../services/ClientGitHub";
-
-interface GitHubUserProps {
-  username: string;
-}
+import { GitHubUserProps } from "../../interfaces/GitHubUserProps";
 
 const GitHubUser: React.FC<GitHubUserProps> = ({ username }) => {
   const [user, setUserData] = useState<any | null>(null);

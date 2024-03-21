@@ -6,6 +6,9 @@ const apiClient = axios.create({
         'Content-Type': 'application/json'
     }
 })
+
+
 export const fetchGitHubUser = (username: string)  => {
    return apiClient.get<any>(`https://api.github.com/users/${username}`);
 }
+
