@@ -1,0 +1,23 @@
+.card-extra-styles{
+    background-color: hwb(40 20% 77%);
+    border-radius: 30px;
+    border-width: 3px;
+    box-shadow: #72a24d 5px 5px 5px 7px;
+    border-style: ridge;
+}
+
+.card-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.product-card__image{
+    padding: 5px;
+    border: 6px;
+    border-radius: 20px;
+    align-content: center;
+    width: 150px;
+    height: 120px;
+}
+
