@@ -5,14 +5,6 @@ import { ItemCarrinhoProps } from "../../interfaces/ItemCarrinhoProps";
 const ItemCarrinhoComponent: React.FC<ItemCarrinhoProps> = ({ produto, quantidade, subtotal }) => {
   return (
     <>
-      <div>
-        <img src={produto?.foto} alt={produto?.descricao} width={100} />
-        <h1>{produto?.nome}</h1>
-        <p>{produto?.descricao}</p>
-        <p>Quantidade: {quantidade}</p>
-        <p>Subtotal: {subtotal}</p>
-      </div>
-
       <Card style={{ width: '18rem' }}>
         <Card.Img variant="top" src={produto?.foto} alt={produto?.descricao} width={100} />
         <Card.Body>
