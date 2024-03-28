@@ -7,7 +7,7 @@ const Carrinho: React.FC = () => {
   const produto: Produto = {
     nome: "X-burguer",
     descricao: "Saboroso",
-    valor: 19.99,
+    valor: "19,99",
     foto: "urlfoto"
   };
 

@@ -1,6 +1,6 @@
 export interface Produto {
     nome: string;
     descricao: string;
-    valor: number;
+    valor: string;
     foto: string;
 }
