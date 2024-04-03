@@ -1,0 +1,33 @@
+.card {
+    color: white;
+    width: 1300px;
+    height: 600px;
+}
+
+.card h2 {
+    font-size: 40px;
+}
+
+
+.card-text {
+    background-color: green;
+    border-radius: 20px;
+    padding: 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+.card-text:hover {
+    transform: scale(1.020);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
