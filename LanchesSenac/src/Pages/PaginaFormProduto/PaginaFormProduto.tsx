@@ -1,8 +1,9 @@
 import FormProduto from "../../components/FormProduto/FormProduto";
+import './PaginaFormProduto.css';
 
 const PaginaFormProduto = () => {
     return( 
-            <div>
+            <div className="paginaFormProduto">
                 <FormProduto/>
             </div>
     );

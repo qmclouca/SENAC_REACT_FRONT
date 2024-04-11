@@ -1,30 +1,46 @@
 
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-
+import './FormProduto.css';
 
 const FormProduto = () => {
     return (
-        <Form>
-            <Form.Group className="mb-3" controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
-                <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
-                </Form.Text>
-            </Form.Group>
+        <div className='productform-background'>
+        <Form className="productform">
+            <div className="product-description">
+                <Form.Group className="mb-3 " controlId="productName">
+                    <Form.Label>Nome do produto</Form.Label>
+                    <Form.Control type="text" placeholder="Descrição do produto" />
+                </Form.Group>
+            </div>
+            <div className="pricing-group">
+                <div className="preco-compra">
+                    <Form.Group controlId="preco-compra">
+                        <Form.Label>Preço de compra</Form.Label>
+                        <Form.Control type="text" placeholder="00.00" />
+                    </Form.Group>
+                </div>
 
-            <Form.Group className="mb-3" controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-                Submit
-            </Button>
+                <div className="preco-venda">
+                    <Form.Group controlId="preco-venda">
+                        <Form.Label>Preço de venda</Form.Label>
+                        <Form.Control type="text" placeholder="00.00" />
+                    </Form.Group>
+                </div>
+
+            </div>
+            <div className='conteiner-adicionais'>
+                <div className="adicionais">
+                    teste
+                </div>
+            </div>
+            <div>
+                <Button variant="primary" type="submit">
+                    Salvar
+                </Button>
+            </div>
         </Form>
+        </div>
     );
 }
 
