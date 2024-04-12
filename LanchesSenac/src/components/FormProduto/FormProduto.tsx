@@ -36,11 +36,11 @@ const FormProduto = () => {
                 </div>
             </div>
 
-            <div className="submit-button-conteiner">
-                <Button variant="primary" type="submit">
+            <center>
+                <Button variant="success" type="submit">
                     Salvar
                 </Button>
-            </div>
+            </center>
         </Form>
         </div>
     );

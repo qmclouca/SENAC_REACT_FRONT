@@ -26,10 +26,27 @@ img {
 .image-selector-background {
     width: 100%;
     height: 100%;
-    background-color: gray;
+    background-color: rgb(201, 201, 201);
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
+.conteiner-template-empty-image {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1vh;
+}
+
+span .conteiner-template-empty-image {
+    font-size: 80px;
+}
+
+.template-empty-image {
+    width: 8vw;
+}
+
