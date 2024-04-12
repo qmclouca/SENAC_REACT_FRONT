@@ -1,0 +1,35 @@
+.conteiner-input-image {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-image {
+    width: 320px;
+    height: 300px;
+    cursor: pointer;
+}
+
+img {
+    width: 98%;
+    height: 98%;
+    border: none;
+}
+
+.input {
+    display: none;
+}
+
+.image-selector-background {
+    width: 400px;
+    height: 400px;
+    background-color: gray;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
