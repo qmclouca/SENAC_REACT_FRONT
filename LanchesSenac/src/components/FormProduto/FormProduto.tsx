@@ -3,8 +3,12 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import './FormProduto.css';
 import InputImage from '../InputImage/InputImage';
+import GenericSelection from '../GenericSelection/GenericSelection';
 
 const FormProduto = () => {
+
+    const listaDeUnidades: string[] = ["KILOS", "GRAMAS", "LITROS", "UNITÁRIO"]
+
     return (
         <div className='productform-background'>
         <Form className="productform">
@@ -37,7 +41,7 @@ const FormProduto = () => {
                         <div className="preco-compra">
                             <Form.Group controlId="preco-compra">
                                 <Form.Label>Unidade</Form.Label>
-                                <Form.Control type="text" placeholder="Selecione uma unidade" />
+                                <GenericSelection lista={listaDeUnidades}/> 
                             </Form.Group>
                         </div>
                         <div className="preco-venda">

@@ -6,7 +6,6 @@ import Cardapio from "./Pages/Cardapio/Cardapio";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import PaginaFormProduto from "./Pages/PaginaFormProduto/PaginaFormProduto";
-import InputImage from "./components/InputImage/InputImage";
 
 
 const App = () => {
@@ -18,7 +17,6 @@ const App = () => {
         <Route path="/autor" element={<Autor />} />
         <Route path="/cardapio" element={<Cardapio />} />
         <Route path="/paginaFormProduto" element={<PaginaFormProduto/>} />
-        <Route path="/inputImage" element={<InputImage/>} />
       </Routes>
     </Router>
   );
