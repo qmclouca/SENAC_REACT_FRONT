@@ -6,7 +6,7 @@ import Cardapio from "./Pages/Cardapio/Cardapio";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import PaginaFormProduto from "./Pages/PaginaFormProduto/PaginaFormProduto";
-
+import Shares from "./Pages/Shares/Share";
 
 const App = () => {
   return (
@@ -17,6 +17,7 @@ const App = () => {
         <Route path="/autor" element={<Autor />} />
         <Route path="/cardapio" element={<Cardapio />} />
         <Route path="/paginaFormProduto" element={<PaginaFormProduto/>} />
+        <Route path="/Share" element={<Shares/>} />
       </Routes>
     </Router>
   );
