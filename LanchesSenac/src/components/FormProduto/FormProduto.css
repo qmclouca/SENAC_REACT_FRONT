@@ -32,6 +32,7 @@
 .basics-inputs {
     display: flex;
     flex-direction: column;
+    gap: 4vh;
 }
 
 .pricing-group {

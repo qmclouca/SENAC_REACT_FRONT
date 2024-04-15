@@ -33,6 +33,20 @@ const FormProduto = () => {
                             </Form.Group>
                         </div>
                     </div>
+                    <div className="pricing-group">
+                        <div className="preco-compra">
+                            <Form.Group controlId="preco-compra">
+                                <Form.Label>Unidade</Form.Label>
+                                <Form.Control type="text" placeholder="Selecione uma unidade" />
+                            </Form.Group>
+                        </div>
+                        <div className="preco-venda">
+                            <Form.Group controlId="preco-venda">
+                                <Form.Label>Estoque</Form.Label>
+                                <Form.Control type="text" placeholder="1" />
+                            </Form.Group>
+                        </div>
+                    </div>
                 </div>
             </div>
 
