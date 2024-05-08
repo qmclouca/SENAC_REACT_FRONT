@@ -1,12 +1,10 @@
-import "./PaginaInicial.css";
-
 const PaginaInicial = () => {
+ 
+
   return (
-    <>
-      <div className="PaginaInicial">
-        <h1>Página Inicial</h1>
-      </div>
-    </>
+    <div className="pagina-inicial">
+      <h1>Pagina inicial</h1>
+    </div>
   );
 };
 
