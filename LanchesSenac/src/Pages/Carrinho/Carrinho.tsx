@@ -2,6 +2,7 @@ import React from "react";
 import CarrinhoComponent from "../../components/Carrinho/CarrinhoComponent";
 import { Pedido } from "../../interfaces/Pedido";
 import { ItemCarrinhoProps } from "../../interfaces/ItemCarrinhoProps";
+import RodapeConferenciaPedidoComponent from "../../components/RodapeConferenciaPedido/RodapeConferenciaPedidoComponent";
 
 const Carrinho: React.FC = () => {
   const itemCarrinho: ItemCarrinhoProps = {
@@ -29,6 +30,7 @@ const Carrinho: React.FC = () => {
   return (
     <div>
       <CarrinhoComponent pedido={pedido} />
+      <RodapeConferenciaPedidoComponent nomeBotao="Concluir Pedido" quantidadeItem={itemCarrinho.quantidade} subtotal={"10,00"}/>
     </div>
   );
 };
