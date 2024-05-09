@@ -23,7 +23,10 @@ const Carrinho: React.FC = () => {
       itemCarrinho,
       itemCarrinho,
       itemCarrinho
-    ]
+    ],
+    subtotal: 10.99,
+    taxaDeEntrega: 5,
+    total: 15.99
   };
 
   return (

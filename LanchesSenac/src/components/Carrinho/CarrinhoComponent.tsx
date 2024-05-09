@@ -4,11 +4,13 @@ import { CarrinhoProps } from "../../interfaces/CarrinhoProps";
 import "./CarrinhoComponent.css";
 import { ItemCarrinhoProps } from "../../interfaces/ItemCarrinhoProps";
 import { classNames } from "primereact/utils";
+import TituloComponent from '../Titulo/TituloComponent.tsx';
+import LinkComponent from '../Link/LinkComponent.tsx';
 
 const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
   const itemTemplate = (item: ItemCarrinhoProps, index: number) => {
     return (
-      <div className="col-12" key={item.produto.id}>
+      <div className="col-12 itemPedido" key={item.produto.id}>
         <div className={classNames('flex flex-column xl:flex-row xl:align-items-start p-4 gap-4', { 'border-top-1 surface-border': index !== 0 })}>
           <img className="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round" src={item.produto.foto} alt={item.produto.nome} />
           <div className="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
@@ -37,12 +39,15 @@ const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
       return itemTemplate(item, index);
     });
 
-    return <div className="grid grid-nogutter">{list}</div>;
+    return <div>{list}</div>;
   };
 
   return (
     <div className="carrinho-container">
+      <TituloComponent texto="Sua sacola tem 2 itens" negrito tamanho="h3"/>
       <DataView value={pedido.itens} listTemplate={listTemplate} />
+      <LinkComponent texto="Adicionar mais itens" whereToGo="/paginaPrincipal" cor="red" tamanho={12}/>
+    {/* <RodapeConferenciaPedido/> */}
     </div>
   );
 };
