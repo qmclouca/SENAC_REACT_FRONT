@@ -1,24 +1,16 @@
 import './RodapeConferenciaPedidoComponent.css';
-import { Col, Row } from "react-bootstrap";
 import { Rodape } from "../../interfaces/Rodape";
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 
 const RodapeConferenciaPedidoComponent: React.FC<Rodape> = ({ subtotal, quantidadeItem, nomeBotao }) => {
     return (
-            <Card>  { }
-                <Card.Body>
-                    <Card.Text>
-                        <Row>
-                            <Col className="d-flex align-items-center" style={{ position: 'absolute' }}>
-                                {subtotal}/{quantidadeItem} itens
-                                <Button variant="primary" style={{ marginLeft: '10px' }}>{nomeBotao}</Button>
-                            </Col>
-                        </Row>
-                    </Card.Text>
-                </Card.Body>
-            </Card>
-    );
+        <footer className="fixed-footer d-flex justify-content-between align-items-center py-2 px-4" style={{ height: '80px' }}>  {/* Adjust the value (e.g., '70px') for desired height */}
+          <div className="d-flex align-items-center">
+            <p className="text-muted me-3 mb-0">Total: R$ {subtotal} / {quantidadeItem} itens</p>
+          </div>
+          <button className="btn btn-primary">{nomeBotao}</button>
+        </footer>
+      );
 };
 
 export default RodapeConferenciaPedidoComponent;
+

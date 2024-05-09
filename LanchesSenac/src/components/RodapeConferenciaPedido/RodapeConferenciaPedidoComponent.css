@@ -3,3 +3,15 @@
     justify-content: center;
     align-items: center;
 }
+
+.fixed-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff; /* Adjust background color as needed */
+    display: flex;
+    justify-content: space-between; /* Adjust content alignment as needed */
+    align-items: center; /* Adjust vertical alignment as needed */
+    padding: 1rem;
+  }
