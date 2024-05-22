@@ -1,8 +1,8 @@
-import { ResumeProduct } from "../../interfaces/PayPage/ResumeProduct"
-import "./ProductResume.css"
+import { ResumeProductProps } from "../../interfaces/PayPage/ResumeProductProps"
+import "./ResumeProduct.css"
 
 
-const ResumeProduct: React.FC<ResumeProduct> = ({productName,productImg,qtdItem,valueItem,valueTotal}) =>{
+const ResumeProduct: React.FC<ResumeProductProps> = ({productName,productImg,qtdItem,valueItem,valueTotal}) =>{
     return(
 
         <div>

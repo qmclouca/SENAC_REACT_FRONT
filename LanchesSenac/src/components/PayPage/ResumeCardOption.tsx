@@ -1,8 +1,8 @@
-import { ResumeCardOption } from '../../interfaces/PayPage/ResumeCardOption'
-import './CardOption.css'
+import { ResumeCardOptionProps } from '../../interfaces/PayPage/ResumeCardOptionProps'
+import "./ResumeCardOption.css"
 
 
-const ResumeCardOption: React.FC<ResumeCardOption> = ({name, cash, card}) =>{
+const ResumeCardOption: React.FC<ResumeCardOptionProps> = ({name, cash, card}) =>{
     return(
         <>
         <div>

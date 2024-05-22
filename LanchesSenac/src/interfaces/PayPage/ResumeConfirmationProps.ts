@@ -1,4 +1,4 @@
-export interface ResumeConfirmation{
+export interface ResumeConfirmationProps{
     total: string;
     obs: string;
     delivery: string;

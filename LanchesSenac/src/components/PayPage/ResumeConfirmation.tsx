@@ -1,9 +1,9 @@
-import { ResumeConfirmation } from '../../interfaces/PayPage/ResumeConfirmation'
-import './EndConfirmation.css'
+import { ResumeConfirmationProps } from '../../interfaces/PayPage/ResumeConfirmationProps'
+import './ResumeConfirmation.css'
 
 
 
-const ResumeConfirmation: React.FC<ResumeConfirmation> = ({delivery,obs,total,toPayBtn}) =>{
+const ResumeConfirmation: React.FC<ResumeConfirmationProps> = ({delivery,obs,total,toPayBtn}) =>{
     return(
         <>
             <div>

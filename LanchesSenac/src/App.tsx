@@ -3,6 +3,8 @@ import "./App.css";
 import PaginaInicial from "./Pages/PaginaInicial/PaginaInicial";
 import Autor from "./Pages/Autor/Autor";
 import Cardapio from "./Pages/Cardapio/Cardapio";
+import Pagamento from "./Pages/Pagamento/Pagamento";
+
 
 const App = () => {
   return (
@@ -12,6 +14,7 @@ const App = () => {
         <Route path="/admin" />
         <Route path="/autor" element={<Autor />} />
         <Route path="/cardapio" element={<Cardapio />} />
+        <Route path="/pagamento" element={<Pagamento />}/>
       </Routes>
     </Router>
   );

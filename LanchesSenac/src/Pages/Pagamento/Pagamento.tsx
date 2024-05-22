@@ -3,9 +3,10 @@ import ResumeConfirmation from "../../components/PayPage/ResumeConfirmation";
 import ResumePayCheck from "../../components/PayPage/ResumePayCheck";
 import ProductResume from "../../components/PayPage/ResumeProduct";
 import ResumeUser from "../../components/PayPage/ResumeUser";
+import { PagamentoProps } from "../../interfaces/PayPage/PagamentoProps";
 
 
-const pagamento =() =>{
+const Pagamento =() =>{
     return(
         <>
         <div className="Resume-User">
@@ -16,36 +17,33 @@ const pagamento =() =>{
         </div>
         <div className="Resume-Product">
             <ProductResume
-            productName =""
+            productName ="X-Tudo Delícia"
             productImg =""
-            qtdItem =""
-            valueItem =""
-            valueTotal =""/>
+            qtdItem ="1"
+            valueItem ="R$65,00"
+            valueTotal ="R$65,00"/>
         </div>
         <div className="Resume-PayCheck">
             <ResumePayCheck
-            howToPay=""
-            payForm =""
+            howToPay="Cartão"
+            payForm ="Crédito"
             />
         </div>
-        <div>
+        <div className="Resume-CardOption">
             <ResumeCardOption
-            name =""
-            card = ""
+            name ="MasterCard"
+            card = "1234123123"
             cash =""/>
         </div>
 
-        <div>
+        <div className="Resume-Confirmation">
             <ResumeConfirmation
-            total =""
-            obs =""
-            delivery =""
+            total ="R$65,00"
+            obs ="Tudo que tenho direito"
+            delivery ="Buscar no local"
             toPayBtn =""/>
         </div>
-      
-
-
-        
+              
         
         </>
     );
@@ -55,4 +53,4 @@ const pagamento =() =>{
 
 };
 
-export default pagamento;
+export default Pagamento;

@@ -1,16 +1,15 @@
-import { ResumeUser } from '../../interfaces/PayPage/ResumeUser'
-import './InfoUser.css'
+import { ResumeUserProps } from '../../interfaces/PayPage/ResumeUserProps'
+import "./ResumeUser.css"
 
 
 
-const ResumeUser: React.FC<ResumeUser> = ({username, phone, address})=>{
+const ResumeUser: React.FC<ResumeUserProps> = ({username, phone, address})=>{
     return (
         <>
             <div>
                 <h2>{username}</h2>
                 <h2>{phone}</h2>
                 <p>{address}</p>
-
             </div>
         
         

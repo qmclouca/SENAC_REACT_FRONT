@@ -1,4 +1,4 @@
-export interface ResumeUser{
+export interface ResumeUserProps{
     username: string;
     phone: string;
     address: string;

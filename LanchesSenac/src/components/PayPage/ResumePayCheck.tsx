@@ -1,9 +1,9 @@
-import { ResumePayCheck } from "../../interfaces/PayPage/ResumePayCheck"
-import "./PayCheck.css"
+import { ResumePayCheckProps } from "../../interfaces/PayPage/ResumePayCheckProps"
+import "./ResumePayCheck.css"
 
 
 
-const ResumePayCheck: React.FC<ResumePayCheck> = ({payForm,howToPay})=>{
+const ResumePayCheck: React.FC<ResumePayCheckProps> = ({payForm,howToPay})=>{
     return(
         <>
         

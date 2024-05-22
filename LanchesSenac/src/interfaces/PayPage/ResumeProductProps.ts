@@ -1,4 +1,4 @@
-export interface ResumeProduct{
+export interface ResumeProductProps{
     productName: string;
     productImg: string;
     qtdItem:string;
