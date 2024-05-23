@@ -51,13 +51,13 @@
 
 .item-foto {
   width: 100%;
-  max-width: 100px;
+  max-width: 150px;
   height: auto;
   border-radius: 5px;
 }
 
 .conteudo-item {
-  padding-left: 20px;
+  padding-left: 5px;
 }
 
 .botoes {
