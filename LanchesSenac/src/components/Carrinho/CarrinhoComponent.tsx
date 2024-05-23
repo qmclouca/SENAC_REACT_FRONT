@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, Col, Row } from 'react-bootstrap';
 import { CarrinhoProps } from "../../interfaces/CarrinhoProps";
 import { ItemCarrinhoProps } from "../../interfaces/ItemCarrinhoProps";
@@ -10,12 +10,35 @@ import './CarrinhoComponent.css';
 
 const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [itensPedido, setItensPedido] = useState<ItemCarrinhoProps[]>([]);
+
+  useEffect(() => {
+    setItensPedido([...pedido.itens]);
+  }, [pedido]);
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
 
-  const itemTemplate = (item: ItemCarrinhoProps) => (
+  const updatePedido = (index: number, updatedItem: ItemCarrinhoProps) => {
+    const updatedItensPedido = [...itensPedido];
+    updatedItensPedido[index] = updatedItem;
+    setItensPedido(updatedItensPedido);
+  };
+
+  const increaseQuantity = (index: number) => {
+    const updatedItem = { ...itensPedido[index], quantidade: itensPedido[index].quantidade + 1 };
+    updatePedido(index, updatedItem);
+  };
+
+  const decreaseQuantity = (index: number) => {
+    if (itensPedido[index].quantidade > 0) {
+      const updatedItem = { ...itensPedido[index], quantidade: itensPedido[index].quantidade - 1 };
+      updatePedido(index, updatedItem);
+    }
+  };
+
+  const itemTemplate = (item: ItemCarrinhoProps, index: number) => (
     <Row className="carrinho-item" key={item.produto.id}>
       <Col xs={3}>
         <img className="item-foto" src={item.produto.foto} alt={item.produto.nome} />
@@ -25,16 +48,16 @@ const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
         <div className="item-subtotal">Subtotal: ${item.subtotal}</div>
       </Col>
       <Col xs={3} className="botoes">
-        <button className="botao-minus">-</button>
+        <button className="botao-minus" onClick={() => decreaseQuantity(index)}>-</button>
         <span className="item-quantidade">{item.quantidade}</span>
-        <button className="botao-plus">+</button>
+        <button className="botao-plus" onClick={() => increaseQuantity(index)}>+</button>
       </Col>
     </Row>
   );
 
   const listTemplate = (items: ItemCarrinhoProps[]) => (
     <>
-      {items.map(item => itemTemplate(item))}
+      {items.map((item, index) => itemTemplate(item, index))}
     </>
   );
 
@@ -48,7 +71,7 @@ const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
           <div className="titulo">
             <TituloComponent texto={`Sua sacola tem ${pedido.itens.length} itens`} negrito tamanho="h3" />
           </div>
-          {listTemplate(pedido.itens)}
+          {listTemplate(itensPedido)}
           <LinkComponent texto="Adicionar mais itens" whereToGo="/paginaPrincipal" cor="red" tamanho={20} />
           <RodapeConferenciaPedidoComponent nomeBotao="Concluir Pedido" quantidadeItem={3} subtotal={"10,00"} />
         </div>
