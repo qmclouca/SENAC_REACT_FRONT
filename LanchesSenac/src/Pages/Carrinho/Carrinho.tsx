@@ -2,9 +2,6 @@ import React from "react";
 import CarrinhoComponent from "../../components/Carrinho/CarrinhoComponent";
 import { Pedido } from "../../interfaces/Pedido";
 import { ItemCarrinhoProps } from "../../interfaces/ItemCarrinhoProps";
-import RodapeConferenciaPedidoComponent from "../../components/RodapeConferenciaPedido/RodapeConferenciaPedidoComponent";
-import TituloComponent from "../../components/Titulo/TituloComponent.tsx";
-import LinkComponent from "../../components/Link/LinkComponent.tsx";
 
 const Carrinho: React.FC = () => {
   const itemCarrinho: ItemCarrinhoProps = {
@@ -34,10 +31,7 @@ const Carrinho: React.FC = () => {
 
   return (
     <div className="carrinho-container">
-      <TituloComponent texto="Sua sacola tem 2 itens" negrito tamanho="h3"/>
       <CarrinhoComponent pedido={pedido} />
-      <LinkComponent texto="Adicionar mais itens" whereToGo="/paginaPrincipal" cor="red" tamanho={12}/>
-      <RodapeConferenciaPedidoComponent nomeBotao="Concluir Pedido" quantidadeItem={itemCarrinho.quantidade} subtotal={"10,00"}/>
     </div>
   );
 };

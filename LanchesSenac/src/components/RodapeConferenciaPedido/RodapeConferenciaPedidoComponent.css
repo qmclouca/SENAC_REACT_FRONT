@@ -2,6 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    right: 30;
+    bottom: 0;
 }
 
 .fixed-footer {

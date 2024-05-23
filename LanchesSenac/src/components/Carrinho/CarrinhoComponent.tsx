@@ -1,53 +1,60 @@
-import React from "react";
-import { DataView } from 'primereact/dataview';
+import React, { useState } from "react";
+import { Button } from 'react-bootstrap';
 import { CarrinhoProps } from "../../interfaces/CarrinhoProps";
-import "./CarrinhoComponent.css";
 import { ItemCarrinhoProps } from "../../interfaces/ItemCarrinhoProps";
-import { classNames } from "primereact/utils";
 import TituloComponent from '../Titulo/TituloComponent.tsx';
 import LinkComponent from '../Link/LinkComponent.tsx';
+import RodapeConferenciaPedidoComponent from "../../components/RodapeConferenciaPedido/RodapeConferenciaPedidoComponent";
+import { RiShoppingCartLine, RiCloseLine } from 'react-icons/ri';
+import { Col, Container, Row } from "react-bootstrap";
 
 const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
-  const itemTemplate = (item: ItemCarrinhoProps, index: number) => {
-    return (
-      <div className="col-12 itemPedido" key={item.produto.id}>
-        <div className={classNames('flex flex-column xl:flex-row xl:align-items-start p-4 gap-4', { 'border-top-1 surface-border': index !== 0 })}>
-          <img className="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round" src={item.produto.foto} alt={item.produto.nome} />
-          <div className="flex flex-column sm:flex-row justify-content-between align-items-center xl:align-items-start flex-1 gap-4">
-            <div className="flex flex-column align-items-center sm:align-items-start gap-3">
-              <div className="text-2xl font-bold text-900">{item.produto.nome}</div>
-              <div className="flex align-items-center gap-3">
-                <span className="flex align-items-center gap-2">
-                  <i className="pi pi-tag"></i>
-                  <span className="font-semibold">{/* Adicione a categoria do produto aqui */}</span>
-                </span>
-              </div>
-            </div>
-            <div className="flex sm:flex-column align-items-center sm:align-items-end gap-3 sm:gap-2">
-              <span className="text-2xl font-semibold">${item.subtotal}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
   };
 
-  const listTemplate = (items: ItemCarrinhoProps[]) => {
-    if (!items || items.length === 0) return null;
+  const itemTemplate = (item: ItemCarrinhoProps) => (
+    <Row className="carrinho-item" key={item.produto.id}>
+      <Col xs={1}>
+        <img className="item-foto" src={item.produto.foto} alt={item.produto.nome} />
+      </Col>
+      <Col xs={8} className="conteudo-item">
+        <div className="item-nome">{item.produto.nome}</div>
+        <div className="item-subtotal">Subtotal: ${item.subtotal}</div>
+      </Col>
+      <Col xs={3} className="botoes">
+        <button className="botao-minus">-</button>
+        <span className="item-quantidade">{item.quantidade}</span>
+        <button className="botao-plus">+</button>
+      </Col>
+    </Row>
+  );
 
-    let list = items.map((item, index) => {
-      return itemTemplate(item, index);
-    });
-
-    return <div>{list}</div>;
-  };
+  const listTemplate = (items: ItemCarrinhoProps[]) => (
+    <>
+      {items.map(item => itemTemplate(item))}
+    </>
+  );
 
   return (
-    <div className="carrinho-container">
-      <TituloComponent texto="Sua sacola tem 2 itens" negrito tamanho="h3"/>
-      <DataView value={pedido.itens} listTemplate={listTemplate} />
-      <LinkComponent texto="Adicionar mais itens" whereToGo="/paginaPrincipal" cor="red" tamanho={12}/>
-    {/* <RodapeConferenciaPedido/> */}
+    <div className={`carrinho-container ${isOpen ? 'sidebar-open' : ''}`}>
+      <Button onClick={toggleSidebar} className="toggle-button">
+        {isOpen ? <RiCloseLine className="close-icon" size={32} /> : <RiShoppingCartLine className="cart-icon" size={32} />}
+      </Button>
+      <div className={`sidebar ${isOpen ? 'open' : ''}`}>
+        <Container>
+          <div className="titulo">
+            <TituloComponent texto={`Sua sacola tem ${pedido.itens.length} itens`} negrito tamanho="h3" />
+          </div>
+          <div className="carrinho-conteudo">
+            {listTemplate(pedido.itens)}
+          </div>
+          <LinkComponent texto="Adicionar mais itens" whereToGo="/paginaPrincipal" cor="red" tamanho={20} />
+          <RodapeConferenciaPedidoComponent nomeBotao="Concluir Pedido" quantidadeItem={3} subtotal={"10,00"} />
+        </Container>
+      </div>
     </div>
   );
 };
