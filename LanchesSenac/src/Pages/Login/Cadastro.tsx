@@ -43,6 +43,31 @@ const Cadastro = () => {
                     <input type="text"/>
 
                 </label>
+                <label id="cpf">
+                    <br /><br />cpf:
+                    <input type="text" autoFocus placeholder="xxx.xxx.xxx-xx" />
+
+                </label>
+                <label id="cep">
+                    cep:
+                    <input type="text" autoFocus placeholder="xxxxx-xxx" />
+                </label>
+                <label id="cidade">
+                <br /><br />cidade:
+                <input type="text" autoFocus/>
+                </label>
+                <label id="bairro">
+                    bairro:
+                    <input type="text" autoFocus/>
+                </label>
+                <label id="endereco">
+                <br /><br />endereco:
+                <input type="text" autoFocus/>
+                </label>
+                <label id="complemento">
+                    complemento:
+                    <input type="text" autoFocus/>
+                </label>
                 
 
             </div>
