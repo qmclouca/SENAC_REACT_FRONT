@@ -22,6 +22,7 @@ const App = () => {
         <Route path="/cardapio" element={<Cardapio />} />
         <Route path="/Share" element={<Shares/>} />
         <Route path="/FormularioExemplo" element={<FormularioEx/>} />
+        <Route path="/carrinho" element={<Carrinho />} />
       </Routes>
     </Router>
   );
