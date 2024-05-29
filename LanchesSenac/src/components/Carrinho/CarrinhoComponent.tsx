@@ -72,8 +72,10 @@ const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
             <TituloComponent texto={`Sua sacola tem ${pedido.itens.length} itens`} negrito tamanho="h3" />
           </div>
           {listTemplate(itensPedido)}
-          <LinkComponent texto="Adicionar mais itens" whereToGo="/paginaPrincipal" cor="red" tamanho={20} />
+          <LinkComponent texto="Adicionar mais itens" whereToGo="/" cor="red" tamanho={20} />
+          <footer className={`rodape ${isOpen ? 'open' : ''}`}>
           <RodapeConferenciaPedidoComponent nomeBotao="Concluir Pedido" quantidadeItem={3} subtotal={"10,00"} />
+          </footer>
         </div>
       </div>
     </div>

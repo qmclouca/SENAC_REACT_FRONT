@@ -34,6 +34,7 @@
 
 .carrinho-conteudo {
   margin-top: 20px;
+  margin-left: 10px;
   text-align: center;
 }
 
@@ -45,7 +46,6 @@
 .carrinho-item {
   margin-top: 10px;
   text-align: left;
-  margin-left: 0;
   margin-bottom: 20px;
 }
 
@@ -73,4 +73,20 @@
   background-color: transparent;
   font-size: 18px;
   cursor: pointer;
+}
+
+.rodape {
+  width: 600px;
+  height: 120px; 
+  background-color: RGB(128, 128, 128);
+  position: fixed; 
+  bottom: 0; 
+  right: -600;
+  text-align: center; 
+  color: white;
+  padding-top: 20px;
+}
+
+.rodape-open {
+  right: 0;
 }
