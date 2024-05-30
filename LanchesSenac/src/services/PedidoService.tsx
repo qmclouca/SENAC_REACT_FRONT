@@ -11,14 +11,14 @@ const apiClient = axios.create({
     }
 })
 
-export const getUltimoPedidoEmAberto = (usuarioId: number)  => {
-    return apiClient.get<any>(`${baseURLPedidos}/${usuarioId}`);
+export const getUltimoPedidoEmAberto = async (usuarioId: number)  => {
+    return await apiClient.get<any>(`${baseURLPedidos}/aberto/${usuarioId}`);
 }
 
-export const postPedido = (pedido: Pedido)  => {
-    return apiClient.post<any>(`${baseURLPedidos}`, pedido); // Certifique-se de enviar o objeto pedido
+export const postPedido = async (pedido: Pedido)  => {
+    return await apiClient.post<any>(`${baseURLPedidos}`, pedido); 
 }
 
 export const putPedido = (pedido: Pedido, pedidoId: number)  => {
-    return apiClient.put<any>(`${baseURLPedidos}/${pedidoId}`, pedido); // Certifique-se de enviar o objeto pedido e o pedidoId
+    return apiClient.put<any>(`${baseURLPedidos}/${pedidoId}`, pedido); 
 }

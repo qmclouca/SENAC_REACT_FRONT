@@ -13,7 +13,7 @@ const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
   const [itensPedido, setItensPedido] = useState<ItemCarrinhoProps[]>([]);
 
   useEffect(() => {
-    setItensPedido([...pedido.itens]);
+    setItensPedido([...pedido.itensPedido]);
   }, [pedido]);
 
   const toggleSidebar = () => {
@@ -27,21 +27,23 @@ const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
   };
 
   const increaseQuantity = (index: number) => {
+    if (itensPedido.length > 0) {
     const updatedItem = { ...itensPedido[index], quantidade: itensPedido[index].quantidade + 1 };
     updatePedido(index, updatedItem);
+    }
   };
 
   const decreaseQuantity = (index: number) => {
-    if (itensPedido[index].quantidade > 0) {
+    if (itensPedido.length > 0 && itensPedido[index].quantidade > 0) {
       const updatedItem = { ...itensPedido[index], quantidade: itensPedido[index].quantidade - 1 };
       updatePedido(index, updatedItem);
     }
   };
 
   const itemTemplate = (item: ItemCarrinhoProps, index: number) => (
-    <Row className="carrinho-item" key={item.produto.id}>
+    <Row className="carrinho-item" key={index}>
       <Col xs={3}>
-        <img className="item-foto" src={item.produto.foto} alt={item.produto.nome} />
+        <img className="item-foto" src={item.produto.linkFoto} alt={item.produto.nome} />
       </Col>
       <Col xs={6} className="conteudo-item">
         <div className="item-nome">{item.produto.nome}</div>
@@ -53,7 +55,7 @@ const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
         <button className="botao-plus" onClick={() => increaseQuantity(index)}>+</button>
       </Col>
     </Row>
-  );
+  );  
 
   const listTemplate = (items: ItemCarrinhoProps[]) => (
     <>
@@ -69,12 +71,12 @@ const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
       <div className={`sidebar ${isOpen ? 'open' : ''}`}>
         <div className="carrinho-conteudo">
           <div className="titulo">
-            <TituloComponent texto={`Sua sacola tem ${pedido.itens.length} itens`} negrito tamanho="h3" />
+            <TituloComponent texto={`Sua sacola tem ${pedido.itensPedido.length} itens`} negrito tamanho="h3" />
           </div>
           {listTemplate(itensPedido)}
           <LinkComponent texto="Adicionar mais itens" whereToGo="/" cor="red" tamanho={20} />
           <footer className={`rodape ${isOpen ? 'open' : ''}`}>
-          <RodapeConferenciaPedidoComponent nomeBotao="Concluir Pedido" quantidadeItem={3} subtotal={"10,00"} />
+          <RodapeConferenciaPedidoComponent nomeBotao="Concluir Pedido" quantidadeItem={itensPedido.length} subtotal={pedido.subtotal != null ? `${pedido.subtotal}` : '0'} />
           </footer>
         </div>
       </div>
