@@ -5,8 +5,9 @@
 .sidebar {
   position: fixed;
   top: 0;
-  right: -600px;
-  width: 600px;
+  right: -100%; 
+  width: 100%;
+  max-width: 600px;
   height: 100%;
   background-color: #fff;
   transition: right 0.3s ease;
@@ -18,14 +19,25 @@
   right: 0;
 }
 
+@media (min-width: 768px) {
+  .sidebar {
+    max-width: 600px;
+    right: -600px; 
+  }
+
+  .sidebar-open {
+    right: 0;
+  }
+}
+
 .toggle-button {
   position: fixed;
-  top: 10px;
+  top: 20px;
   right: 10px;
   z-index: 1000;
   background-color: blue;
-  width: 75px;
-  height: 75px;
+  width: 60px;
+  height: 40px;
 }
 
 .open {
@@ -43,6 +55,12 @@
   margin-bottom: 20px;
 }
 
+@media (max-width: 768px) {
+  .carrinho-item {
+    margin-bottom: 10px; 
+  }
+}
+
 .carrinho-item {
   margin-top: 10px;
   text-align: left;
@@ -50,11 +68,12 @@
 }
 
 .item-foto {
-  width: 100%;
-  max-width: 150px;
+  width: 100%; 
+  max-width: 100%;
   height: auto;
   border-radius: 5px;
 }
+
 
 .conteudo-item {
   padding-left: 5px;

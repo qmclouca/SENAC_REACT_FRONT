@@ -84,6 +84,8 @@ const PaginaInicial: React.FC = () => {
     username: 'joao.joao'
   };
 
+console.log('teste: '+pedidoSalvo);
+
   return (
     <div className="pagina-inicial">
       <h1>Página Inicial</h1>
