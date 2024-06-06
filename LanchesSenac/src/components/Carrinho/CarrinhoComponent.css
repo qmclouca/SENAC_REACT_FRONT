@@ -118,12 +118,10 @@
 
 .rodape {
   width: 100%; 
-  max-width: 600px;
   height: auto;
   position: fixed;
   bottom: 0;
   right: 0;
-  transform: translateX(-50%);
   text-align: center;
   color: #fff;
   background-color: grey;
@@ -131,6 +129,7 @@
 }
 
 .sidebar-open .rodape {
+  max-width: 600px;
   transform: translateX(0);
 }
 
