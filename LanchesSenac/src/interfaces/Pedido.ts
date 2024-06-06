@@ -6,6 +6,6 @@ export interface Pedido {
     itensPedido: ItemCarrinhoProps[]
     subtotal: number;
     taxaDeEntrega: number;
-    total: number;
+    valor: number;
     usuario: UsuarioProps;
 }

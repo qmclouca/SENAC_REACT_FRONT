@@ -39,23 +39,23 @@ const PaginaInicial: React.FC = () => {
               {
                 produto: produtoSalvo,
                 quantidade: 1,
-                subtotal: 19.99,
+                valor: 19.99,
               },
               {
                 produto: produtoSalvo,
                 quantidade: 1,
-                subtotal: 19.99,
+                valor: 19.99,
               },
               {
                 produto: produtoSalvo,
                 quantidade: 1,
-                subtotal: 19.99,
+                valor: 19.99,
               }
             ],
             usuario: usuarioSalvo,
             subtotal: 10.99,
             taxaDeEntrega: 5,
-            total: 15.99
+            valor: 15.99
           };
 
           await postPedido(pedido);

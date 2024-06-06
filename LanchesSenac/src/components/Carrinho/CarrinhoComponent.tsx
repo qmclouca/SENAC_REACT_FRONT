@@ -11,16 +11,25 @@ import './CarrinhoComponent.css';
 const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [itensPedido, setItensPedido] = useState<ItemCarrinhoProps[]>([]);
+  const [valorTotalPedido, setValorTotalPedido] = useState(0);
+  const [QuantidadeTotalItensPedido, setQuantidadeTotalItensPedido] = useState(0);
 
   useEffect(() => {
     setItensPedido([...pedido.itensPedido]);
   }, [pedido]);
 
+  useEffect(() => {
+    const total = itensPedido.reduce((acc, item) => acc + item.valor, 0);
+    const quantidade = itensPedido.reduce((acc, item) => acc + item.quantidade, 0);
+    setValorTotalPedido(total);
+    setQuantidadeTotalItensPedido(quantidade)
+  }, [itensPedido]);
+
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
 
-  const updatePedido = (index: number, updatedItem: ItemCarrinhoProps) => {
+  const updateItemPedido = (index: number, updatedItem: ItemCarrinhoProps) => {
     const updatedItensPedido = [...itensPedido];
     updatedItensPedido[index] = updatedItem;
     setItensPedido(updatedItensPedido);
@@ -33,15 +42,15 @@ const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
 
   const increaseQuantity = (index: number) => {
     if (itensPedido.length > 0) {
-      const updatedItem = { ...itensPedido[index], quantidade: itensPedido[index].quantidade + 1, subtotal: itensPedido[index].produto.valor * (itensPedido[index].quantidade + 1) };
-      updatePedido(index, updatedItem);
+      const updatedItem = { ...itensPedido[index], quantidade: itensPedido[index].quantidade + 1, valor: itensPedido[index].produto.valor * (itensPedido[index].quantidade + 1) };
+      updateItemPedido(index, updatedItem);
     }
   };
 
   const decreaseQuantity = (index: number) => {
     if (itensPedido.length > 0 && itensPedido[index].quantidade > 0) {
-      const updatedItem = { ...itensPedido[index], quantidade: itensPedido[index].quantidade - 1, subtotal: itensPedido[index].produto.valor * (itensPedido[index].quantidade - 1) };
-      updatePedido(index, updatedItem);
+      const updatedItem = { ...itensPedido[index], quantidade: itensPedido[index].quantidade - 1, valor: itensPedido[index].produto.valor * (itensPedido[index].quantidade - 1) };
+      updateItemPedido(index, updatedItem);
     } else {
       removeItemPedido(index);
     }
@@ -54,7 +63,7 @@ const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
       </Col>
       <Col md={6} sm={6} xs={4} className="conteudo-item">
         <div className="item-nome">{item.produto.nome}</div>
-        <div className="item-subtotal">Subtotal: ${item.subtotal}</div>
+        <div className="item-subtotal">Subtotal: ${item.valor.toFixed(2)}</div>
       </Col>
       <Col sm={3} xs={3} className="botoes">
         <button className="botao-minus" onClick={() => decreaseQuantity(index)}>-</button>
@@ -86,7 +95,7 @@ const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
           <Row className="justify-content-center mt-4">
             <Col xs={12} sm={8} md={6}>
               <footer className={`rodape ${isOpen ? 'open' : ''}`}>
-                <RodapeConferenciaPedidoComponent nomeBotao="Concluir Pedido" quantidadeItem={itensPedido.length} subtotal={pedido.subtotal != null ? `${pedido.subtotal}` : '0'} />
+                <RodapeConferenciaPedidoComponent nomeBotao="Concluir Pedido" quantidadeItem={QuantidadeTotalItensPedido} subtotal={pedido.valor != null ? `${valorTotalPedido.toFixed(2)}` : '0'} />
               </footer>
             </Col>
           </Row>
