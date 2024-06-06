@@ -12,7 +12,7 @@ const Title: React.FC<TituloProps> = ({ texto, negrito, italico, tamanho }) => {
   const titleClasses = classNames({
     'bold': negrito,
     'italic': italico,
-    [`${tamanho}`]: tamanho // Pode ser usado tamanho personalizado, por exemplo, 'h1', 'h2', 'h3', etc.
+    [`${tamanho}`]: tamanho
   });
 
   return (

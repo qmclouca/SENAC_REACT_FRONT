@@ -26,22 +26,21 @@ const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
     setItensPedido(updatedItensPedido);
   };
 
-
   const removeItemPedido = (index: number) => {
-    itensPedido.slice(index);
-    setItensPedido(itensPedido);
+    const updatedItensPedido = itensPedido.filter((_, i) => i !== index);
+    setItensPedido(updatedItensPedido);
   };
 
   const increaseQuantity = (index: number) => {
     if (itensPedido.length > 0) {
-      let updatedItem = { ...itensPedido[index], quantidade: itensPedido[index].quantidade + 1, subtotal: itensPedido[index].produto.valor * (itensPedido[index].quantidade + 1) };
+      const updatedItem = { ...itensPedido[index], quantidade: itensPedido[index].quantidade + 1, subtotal: itensPedido[index].produto.valor * (itensPedido[index].quantidade + 1) };
       updatePedido(index, updatedItem);
     }
   };
 
   const decreaseQuantity = (index: number) => {
     if (itensPedido.length > 0 && itensPedido[index].quantidade > 0) {
-      let updatedItem = { ...itensPedido[index], quantidade: itensPedido[index].quantidade - 1, subtotal: itensPedido[index].produto.valor * (itensPedido[index].quantidade - 1) };
+      const updatedItem = { ...itensPedido[index], quantidade: itensPedido[index].quantidade - 1, subtotal: itensPedido[index].produto.valor * (itensPedido[index].quantidade - 1) };
       updatePedido(index, updatedItem);
     } else {
       removeItemPedido(index);
@@ -53,7 +52,7 @@ const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
       <Col xs={3}>
         <img className="item-foto img-fluid" src={item.produto.linkFoto} alt={item.produto.nome} />
       </Col>
-      <Col md={6} sm={6} xs={4}  className="conteudo-item">
+      <Col md={6} sm={6} xs={4} className="conteudo-item">
         <div className="item-nome">{item.produto.nome}</div>
         <div className="item-subtotal">Subtotal: ${item.subtotal}</div>
       </Col>
@@ -79,14 +78,18 @@ const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
       <div className={`sidebar ${isOpen ? 'open' : ''}`}>
         <div className="carrinho-conteudo">
           <div className="titulo">
-            <TituloComponent texto={`Sua sacola tem ${pedido.itensPedido.length} itens`} negrito tamanho="h3" />
+            <TituloComponent texto={`Sua sacola tem ${pedido.itensPedido.length} itens`} negrito />
           </div>
           <div style={{ marginTop: 50 }}></div>
           {listTemplate(itensPedido)}
           <LinkComponent texto="Adicionar mais itens" whereToGo="/" cor="red" tamanho={20} />
-          <footer className={`rodape ${isOpen ? 'open' : ''}`}>
-            <RodapeConferenciaPedidoComponent nomeBotao="Concluir Pedido" quantidadeItem={itensPedido.length} subtotal={pedido.subtotal != null ? `${pedido.subtotal}` : '0'} />
-          </footer>
+          <Row className="justify-content-center mt-4">
+            <Col xs={12} sm={8} md={6}>
+              <footer className={`rodape ${isOpen ? 'open' : ''}`}>
+                <RodapeConferenciaPedidoComponent nomeBotao="Concluir Pedido" quantidadeItem={itensPedido.length} subtotal={pedido.subtotal != null ? `${pedido.subtotal}` : '0'} />
+              </footer>
+            </Col>
+          </Row>
         </div>
       </div>
     </div>

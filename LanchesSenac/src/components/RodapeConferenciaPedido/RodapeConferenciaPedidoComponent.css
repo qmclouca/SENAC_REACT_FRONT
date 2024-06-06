@@ -4,9 +4,9 @@
     align-items: center;
     right: 30;
     bottom: 0;
-}
-
-.fixed-footer {
+  }
+  
+  .fixed-footer {
     position: fixed;
     bottom: 0;
     left: 0;
