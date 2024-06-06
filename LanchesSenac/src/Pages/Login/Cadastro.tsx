@@ -20,8 +20,6 @@ const Cadastro = () => {
 
                 </label>
 
-
-
                 <label id="email">
                     <br /><br />  Email :
                     <input type="text" autoFocus placeholder="fulano@gmail.com" />

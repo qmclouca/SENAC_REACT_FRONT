@@ -1,4 +1,5 @@
 import axios from "axios";
+import { cadastroProps } from "../interfaces/cadastroProps";
 
 
 
@@ -13,6 +14,10 @@ const apiClient = axios.create({
 
 })
 
-export const fetchLogin = (username: string)  => {
-    return apiClient.get<any>(`https://localhost:8080/cadastro`);
+export const cadastrar= (cadastro : cadastroProps)  => {
+    return apiClient.post<any>(`https://localhost:8080/cadastrar`);
  }
+
+
+
+
