@@ -17,7 +17,7 @@ body{
 }
 
 .left-login{
-    width: 50vw;
+    width: 60vw;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -39,14 +39,14 @@ body{
 
 .card-login{
     width: 100%;
-    height: 92%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding: 30px 175px;
+    padding: 0px 175px;
     background: white;
-    border-radius: 20px;
+   
     box-shadow: 0px 10px 40px #00000056;
 }
 
@@ -54,10 +54,11 @@ body{
     color: black;
     font-weight: 800;
     margin: 0;
+    margin-top: 50px;
 }
 
 .textfield{
-    width: 100%;
+    width: 125%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -94,9 +95,10 @@ body{
 }
 
 .btn-login{
-    width: 100%;
-    padding: 16px 0px;
-    margin: 125px;
+    width: 60%;
+    padding: 10px 0px;
+    margin-top: 50px;
+    margin-bottom: 20px;
     border: none;
     border-radius: 8px;
     outline: none;
@@ -107,4 +109,7 @@ body{
     background: #FFBB00;
     cursor: pointer;
     box-shadow: 0px 10px 40px #00000056;
+   
 }
+
+

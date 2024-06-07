@@ -15,6 +15,7 @@ const Login = () => {
                   <h1>LOGIN</h1>
                   <h3>Bem vindo</h3>
                   <div className="textfield">
+                    
                      <label htmlFor="usuario">Usuario</label>
                      <input type="text" name="usuario" placeholder="Usuário"></input>
                   </div>
@@ -23,6 +24,7 @@ const Login = () => {
                      <input type="password" name="senha" placeholder="Senha"></input>
                   </div>
                   <button className="btn-login">Login</button>
+                  <label htmlFor="cadastro">Você não tem login?</label>
                </div>
             </div>
          </div>
