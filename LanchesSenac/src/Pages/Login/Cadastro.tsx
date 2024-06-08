@@ -4,92 +4,43 @@ const Cadastro = () => {
     return (
 
         <>
-
-            <div className="BarraPreencher">
-
-
-
-                <label id="nome">
-                    <br /><br />  Nome :
-                    <input type="text" autoFocus />
-
-                </label>
-                <label id="sobrenome">
-                    Sobrenome :
-                    <input type="text" autoFocus />
-
-                </label>
-
-                <label id="email">
-                    <br /><br />  Email :
-                    <input type="text" autoFocus placeholder="fulano@gmail.com" />
-
-                </label>
-
-                <label id="telefone">
-                    Telefone :
-                    <input type="text" autoFocus placeholder="(xx)xxxx-xxxx" />
-
-                </label>
-                <label id="senha">
-                    <br /><br /> Senha :
-                    <input type="text" placeholder="xxx123" />
-
-                </label>
-                <label id="confirmacao">
-                     Confirmar senha :
-                    <input type="text"/>
-
-                </label>
-                <label id="cpf">
-                    <br /><br />cpf:
-                    <input type="text" autoFocus placeholder="xxx.xxx.xxx-xx" />
-
-                </label>
-                <label id="cep">
-                    cep:
-                    <input type="text" autoFocus placeholder="xxxxx-xxx" />
-                </label>
-                <label id="cidade">
-                <br /><br />cidade:
-                <input type="text" autoFocus/>
-                </label>
-                <label id="bairro">
-                    bairro:
-                    <input type="text" autoFocus/>
-                </label>
-                <label id="endereco">
-                <br /><br />endereco:
-                <input type="text" autoFocus/>
-                </label>
-                <label id="complemento">
-                    complemento:
-                    <input type="text" autoFocus/>
-                </label>
-                
-
-            </div>
-
-            <div className="BotoCadastrar">
-
-                <label id="botaoCadastro">
-                    <br />
-                    <input type="button" value="CADASTRAR" />
-
-                </label>
-
-            </div>
-
-            <div className="redirecionarLogin">
-
-                <label>
-                    <a href="localhost:5173/login">Login</a>
-
-                </label>
+            <div className="main-cadastro">
+                <div className="left-cadastro">
+                    <img src="src\assets\SenacXLanches.png" alt="Gon" width="500px" height="500px"></img>
+                </div>
+                <div className="right-cadastro">
+                    <div className="card-cadastro">
+                        <h1>CADASTRO</h1>
+                        <h3>Seja bem vindo</h3>
+                            <div className="textfield">
+                                <input type="text" name="nome" placeholder="Nome"></input>
+                                <input type="text" name="sobrenome" placeholder="Sobrenome"></input>
+                            </div>
+                        <div className="textfield">
+                            <input type="text" name="cpf" placeholder="CPF"></input>
+                            <input type="text" name="email" placeholder="E-mail"></input>
+                            <input type="text" name="telefone" placeholder="Telefone"></input>
+                        </div>
+                        <div className="textfield">
+                            <input type="text" name="senha" placeholder="Senha"></input>
+                            <input type="text" name="confirmarsenha" placeholder="Confirmar Senha"></input>
+                        </div>
+                        <div className="textfield">
+                            <input type="text" name="cep" placeholder="CEP"></input>
+                            <input type="text" name="cidade" placeholder="Cidade"></input>
+                            <input type="text" name="bairro" placeholder="Bairro"></input>
+                        </div>
+                        <div className="textfield">
+                            <input type="text" name="endereco" placeholder="endereco"></input>
+                            <input type="text" name="complemento" placeholder="complemento"></input>
+                        </div>
+                        <button className="btn-cadastro">Cadastro</button>
+                        <label htmlFor="login">Você já tem login?</label>
+                    </div>
+                </div>
 
 
             </div>
-
 
 
 

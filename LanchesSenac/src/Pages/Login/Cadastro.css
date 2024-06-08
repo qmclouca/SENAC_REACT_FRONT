@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+body{
+    margin: 0;
+    font-family: 'Noto Sans' , sans-serif;
+    
+}
+
+.main-cadastro{
+    width: 100vw;
+    height: 100vh;
+    background:#FFBB00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.left-cadastro{
+    width: 60vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.left-cadastro > h1 {
+    color: black;
+}
+
+.right-cadastro{
+    width: 70vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-cadastro{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0px 175px;
+    background: white;
+   
+    box-shadow: 0px 10px 40px #00000056;
+}
+
+.card-cadastro > h1{
+    color: black;
+    font-weight: 800;
+    margin: 0;
+    margin-top: 50px;
+}
+
+.textfield{
+    width: 125%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 10px;
+    
+
+}
+
+
+.textfield > input{
+    width: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background:#FFBB00;
+    ;
+    color: white;
+    font-size: 12pt;
+    box-shadow: 0px 10px 40px #00000056;
+    outline: none;
+    box-sizing: border-box;
+
+}
+
+.textfield > label{
+    color: black;
+    margin-bottom: 10px;
+
+}
+
+.textfield > input ::placeholder{
+    color: black;
+}
