@@ -19,8 +19,9 @@ const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
   }, [pedido]);
 
   useEffect(() => {
-    const total = itensPedido.reduce((acc, item) => acc + item.valor, 0);
-    const quantidade = itensPedido.reduce((acc, item) => acc + item.quantidade, 0);
+    const total = pedido.itensPedido.reduce((acc, item) => acc + item.valor, 0);
+    const quantidade = pedido.itensPedido.reduce((acc, item) => acc + item.quantidade, 0);
+    setItensPedido(pedido.itensPedido);
     setValorTotalPedido(total);
     setQuantidadeTotalItensPedido(quantidade)
   }, [itensPedido]);
@@ -63,7 +64,7 @@ const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
       </Col>
       <Col md={6} sm={6} xs={4} className="conteudo-item">
         <div className="item-nome">{item.produto.nome}</div>
-        <div className="item-subtotal">Subtotal: ${item.valor.toFixed(2)}</div>
+        <div className="item-subtotal">Subtotal: ${item.valor != null ? `${item.valor.toFixed(2)}` : '0'}</div>
       </Col>
       <Col sm={3} xs={3} className="botoes">
         <button className="botao-minus" onClick={() => decreaseQuantity(index)}>-</button>
@@ -95,7 +96,7 @@ const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
           <Row className="justify-content-center mt-4">
             <Col xs={12} sm={8} md={6}>
               <footer className={`rodape ${isOpen ? 'open' : ''}`}>
-                <RodapeConferenciaPedidoComponent nomeBotao="Concluir Pedido" quantidadeItem={QuantidadeTotalItensPedido} subtotal={pedido.valor != null ? `${valorTotalPedido.toFixed(2)}` : '0'} />
+                <RodapeConferenciaPedidoComponent nomeBotao="Concluir Pedido" quantidadeItem={QuantidadeTotalItensPedido} subtotal={valorTotalPedido != null ? `${valorTotalPedido.toFixed(2)}` : '0'} />
               </footer>
             </Col>
           </Row>
