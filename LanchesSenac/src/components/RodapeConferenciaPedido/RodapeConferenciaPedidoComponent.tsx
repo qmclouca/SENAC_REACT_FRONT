@@ -1,11 +1,12 @@
 import './RodapeConferenciaPedidoComponent.css';
 import { Rodape } from "../../interfaces/Rodape";
+import { Button } from 'react-bootstrap';
 
 const RodapeConferenciaPedidoComponent: React.FC<Rodape> = ({ subtotal, quantidadeItem, nomeBotao }) => {
   return (
-    <footer className="rodapeContainer" style={{ height: '80px' }}>
+    <footer color="#FFBB00" className="rodapeContainer" style={{ height: '80px' }}>
       <p className="">Total: R$ {subtotal} / {quantidadeItem} itens</p>
-      <button className="btn btn-primary botao-concluir-pedido">{nomeBotao}</button>
+      <Button variant="success" className="btn botao-concluir-pedido">{nomeBotao}</Button>
     </footer>
   );
 };

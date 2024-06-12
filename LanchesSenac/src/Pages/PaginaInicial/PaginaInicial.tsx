@@ -58,8 +58,11 @@ const PaginaInicial: React.FC = () => {
             valor: 15.99
           };
 
-          await postPedido(pedido);
-          const ultimoPedidoResponse = await getUltimoPedidoEmAberto(1);
+        
+          let ultimoPedidoResponse = await getUltimoPedidoEmAberto(1);
+          if (ultimoPedidoResponse == null) { 
+            ultimoPedidoResponse = await postPedido(pedido);
+          }
           const ultimoPedidoData: Pedido = ultimoPedidoResponse.data;
           setPedidoSalvo(ultimoPedidoData);
         }
@@ -83,8 +86,6 @@ const PaginaInicial: React.FC = () => {
     nome: 'João',
     username: 'joao.joao'
   };
-
-console.log('teste: '+pedidoSalvo);
 
   return (
     <div className="pagina-inicial">

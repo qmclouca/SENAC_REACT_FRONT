@@ -17,3 +17,11 @@
     align-items: center; /* Adjust vertical alignment as needed */
     padding: 1rem;
   }
+
+  .botao-concluir-pedido {
+    background-color: #0a8a01;
+  }
+
+  .btn-success {
+    background-color: #0a8a01 !important;
+  }

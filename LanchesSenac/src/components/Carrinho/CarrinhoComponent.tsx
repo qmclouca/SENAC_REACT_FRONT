@@ -6,6 +6,7 @@ import TituloComponent from '../Titulo/TituloComponent.tsx';
 import LinkComponent from '../Link/LinkComponent.tsx';
 import RodapeConferenciaPedidoComponent from "../../components/RodapeConferenciaPedido/RodapeConferenciaPedidoComponent";
 import { RiShoppingCartLine, RiCloseLine } from 'react-icons/ri';
+import { postPedido } from "../../services/PedidoService.tsx";
 import './CarrinhoComponent.css';
 
 const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
@@ -19,11 +20,10 @@ const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
   }, [pedido]);
 
   useEffect(() => {
-    const total = pedido.itensPedido.reduce((acc, item) => acc + item.valor, 0);
-    const quantidade = pedido.itensPedido.reduce((acc, item) => acc + item.quantidade, 0);
-    setItensPedido(pedido.itensPedido);
+    const total = itensPedido.reduce((acc, item) => acc + item.valor, 0);
+    const quantidade = itensPedido.reduce((acc, item) => acc + item.quantidade, 0);
     setValorTotalPedido(total);
-    setQuantidadeTotalItensPedido(quantidade)
+    setQuantidadeTotalItensPedido(quantidade);
   }, [itensPedido]);
 
   const toggleSidebar = () => {
@@ -34,26 +34,30 @@ const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
     const updatedItensPedido = [...itensPedido];
     updatedItensPedido[index] = updatedItem;
     setItensPedido(updatedItensPedido);
+    postPedido({ ...pedido, itensPedido: updatedItensPedido });
   };
 
   const removeItemPedido = (index: number) => {
     const updatedItensPedido = itensPedido.filter((_, i) => i !== index);
     setItensPedido(updatedItensPedido);
+    postPedido({ ...pedido, itensPedido: updatedItensPedido });
   };
 
   const increaseQuantity = (index: number) => {
-    if (itensPedido.length > 0) {
-      const updatedItem = { ...itensPedido[index], quantidade: itensPedido[index].quantidade + 1, valor: itensPedido[index].produto.valor * (itensPedido[index].quantidade + 1) };
-      updateItemPedido(index, updatedItem);
-    }
+    const item = itensPedido[index];
+    const updatedItem = { ...item, quantidade: item.quantidade + 1, valor: item.produto.valor * (item.quantidade + 1) };
+    updateItemPedido(index, updatedItem);
   };
 
   const decreaseQuantity = (index: number) => {
-    if (itensPedido.length > 0 && itensPedido[index].quantidade > 0) {
-      const updatedItem = { ...itensPedido[index], quantidade: itensPedido[index].quantidade - 1, valor: itensPedido[index].produto.valor * (itensPedido[index].quantidade - 1) };
+    const item = itensPedido[index];
+    if (item.quantidade > 1) {
+      const updatedItem = { ...item, quantidade: item.quantidade - 1, valor: item.produto.valor * (item.quantidade - 1) };
       updateItemPedido(index, updatedItem);
-    } else {
-      removeItemPedido(index);
+    } else if (item.quantidade === 1) {
+      if (window.confirm("Deseja remover o item do pedido?")) {
+        removeItemPedido(index);
+      }
     }
   };
 
@@ -82,13 +86,13 @@ const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
 
   return (
     <div className={`carrinho-container ${isOpen ? 'sidebar-open' : ''}`}>
-      <Button onClick={toggleSidebar} className="toggle-button">
+      <Button variant="outline-warning" onClick={toggleSidebar} className="toggle-button">
         {isOpen ? <RiCloseLine className="close-icon" size={28} /> : <RiShoppingCartLine className="cart-icon" size={28} />}
       </Button>
       <div className={`sidebar ${isOpen ? 'open' : ''}`}>
         <div className="carrinho-conteudo">
           <div className="titulo">
-            <TituloComponent texto={`Sua sacola tem ${pedido.itensPedido.length} itens`} negrito />
+            <TituloComponent texto={`Sua sacola tem ${itensPedido.length} itens`} negrito />
           </div>
           <div style={{ marginTop: 50 }}></div>
           {listTemplate(itensPedido)}
@@ -96,7 +100,11 @@ const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
           <Row className="justify-content-center mt-4">
             <Col xs={12} sm={8} md={6}>
               <footer className={`rodape ${isOpen ? 'open' : ''}`}>
-                <RodapeConferenciaPedidoComponent nomeBotao="Concluir Pedido" quantidadeItem={QuantidadeTotalItensPedido} subtotal={valorTotalPedido != null ? `${valorTotalPedido.toFixed(2)}` : '0'} />
+                <RodapeConferenciaPedidoComponent 
+                  nomeBotao="Concluir Pedido" 
+                  quantidadeItem={QuantidadeTotalItensPedido} 
+                  subtotal={valorTotalPedido != null ? `${valorTotalPedido.toFixed(2)}` : '0'} 
+                />
               </footer>
             </Col>
           </Row>
