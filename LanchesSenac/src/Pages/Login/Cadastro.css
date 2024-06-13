@@ -30,7 +30,7 @@ body{
 }
 
 .right-cadastro{
-    width: 70vw;
+    width: 50vw;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -57,39 +57,20 @@ body{
     margin-top: 50px;
 }
 
-.textfield{
-    width: 125%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
+.textcampo{
+   
     margin: 10px;
-    
 
 }
 
-
-.textfield > input{
-    width: 100%;
+.textcampo > input{
+    width: 20%;
     border: none;
-    border-radius: 10px;
+    margin-inline: 10px;
+   border-radius: 5px;
     padding: 15px;
     background:#FFBB00;
-    ;
-    color: white;
-    font-size: 12pt;
-    box-shadow: 0px 10px 40px #00000056;
-    outline: none;
-    box-sizing: border-box;
+    
+    
 
-}
-
-.textfield > label{
-    color: black;
-    margin-bottom: 10px;
-
-}
-
-.textfield > input ::placeholder{
-    color: black;
 }

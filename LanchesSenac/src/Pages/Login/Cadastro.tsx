@@ -12,25 +12,25 @@ const Cadastro = () => {
                     <div className="card-cadastro">
                         <h1>CADASTRO</h1>
                         <h3>Seja bem vindo</h3>
-                            <div className="textfield">
-                                <input type="text" name="nome" placeholder="Nome"></input>
-                                <input type="text" name="sobrenome" placeholder="Sobrenome"></input>
-                            </div>
-                        <div className="textfield">
+                        <div className="textcampo">
+                            <input type="text" className="nome" name="nome" placeholder="Nome"></input>
+                            <input type="text" className="sobrenome" name="sobrenome" placeholder="Sobrenome"></input>
+                        </div>
+                        <div className="textcampo">
                             <input type="text" name="cpf" placeholder="CPF"></input>
                             <input type="text" name="email" placeholder="E-mail"></input>
                             <input type="text" name="telefone" placeholder="Telefone"></input>
                         </div>
-                        <div className="textfield">
+                        <div className="textcampo">
                             <input type="text" name="senha" placeholder="Senha"></input>
                             <input type="text" name="confirmarsenha" placeholder="Confirmar Senha"></input>
                         </div>
-                        <div className="textfield">
+                        <div className="textcampo">
                             <input type="text" name="cep" placeholder="CEP"></input>
                             <input type="text" name="cidade" placeholder="Cidade"></input>
                             <input type="text" name="bairro" placeholder="Bairro"></input>
                         </div>
-                        <div className="textfield">
+                        <div className="textcampo">
                             <input type="text" name="endereco" placeholder="endereco"></input>
                             <input type="text" name="complemento" placeholder="complemento"></input>
                         </div>
