@@ -13,10 +13,12 @@ const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [itensPedido, setItensPedido] = useState<ItemCarrinhoProps[]>([]);
   const [valorTotalPedido, setValorTotalPedido] = useState(0);
-  const [QuantidadeTotalItensPedido, setQuantidadeTotalItensPedido] = useState(0);
+  const [quantidadeTotalItensPedido, setQuantidadeTotalItensPedido] = useState(0);
 
   useEffect(() => {
-    setItensPedido([...pedido.itensPedido]);
+    if (pedido && pedido.itensPedido) {
+      setItensPedido([...pedido.itensPedido]);
+    }
   }, [pedido]);
 
   useEffect(() => {
@@ -102,7 +104,7 @@ const CarrinhoComponent: React.FC<CarrinhoProps> = ({ pedido }) => {
               <footer className={`rodape ${isOpen ? 'open' : ''}`}>
                 <RodapeConferenciaPedidoComponent 
                   nomeBotao="Concluir Pedido" 
-                  quantidadeItem={QuantidadeTotalItensPedido} 
+                  quantidadeItem={quantidadeTotalItensPedido} 
                   subtotal={valorTotalPedido != null ? `${valorTotalPedido.toFixed(2)}` : '0'} 
                 />
               </footer>

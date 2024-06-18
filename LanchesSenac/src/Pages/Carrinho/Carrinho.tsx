@@ -1,43 +1,43 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import CarrinhoComponent from "../../components/Carrinho/CarrinhoComponent";
 import { Pedido } from "../../interfaces/Pedido";
-import { ItemCarrinhoProps } from "../../interfaces/ItemCarrinhoProps";
-import { UsuarioProps } from "../../interfaces/UsuarioProps";
+import { getUltimoPedidoEmAberto } from "../../services/PedidoService";
 
 const Carrinho: React.FC = () => {
-  const itemCarrinho: ItemCarrinhoProps = {
-    produto: {
-    id: 1,
-    nome: "X-burguer",
-    descricao: "Saboroso",
-    valor: 19.99,
-    linkFoto: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGBaisU9d80P-ks9Pplz_SoWB6iK7W08iZcg&s"
-    },
-    quantidade: 1,
-    valor: 19.99,
-  };
+  const [pedido, setPedido] = useState<Pedido | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  const usuario: UsuarioProps = {
-    nome: 'João',
-    username: 'joao.joao'
-  };
+  useEffect(() => {
+    const buscarPedido = async () => {
+      try {
+        let ultimoPedidoResponse = await getUltimoPedidoEmAberto(1);
+        if (ultimoPedidoResponse && ultimoPedidoResponse.data) {
+          const ultimoPedidoData: Pedido = ultimoPedidoResponse.data;
+          setPedido(ultimoPedidoData);
+        } else {
+          setPedido(null);
+        }
+      } catch (err) {
+        setPedido(null);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  const pedido: Pedido = {
-    id: 10,
-    itensPedido: [
-      itemCarrinho,
-      itemCarrinho,
-      itemCarrinho
-    ],
-    usuario: usuario,
-    subtotal: 10.99,
-    taxaDeEntrega: 5,
-    valor: 15.99
-  };
+    buscarPedido();
+  }, []);
+
+  if (loading) {
+    return <div>Carregando...</div>;
+  }
 
   return (
     <div className="carrinho-container">
-      <CarrinhoComponent pedido={pedido} />
+      {pedido ? (
+        <CarrinhoComponent pedido={pedido} />
+      ) : (
+        <div>Nenhum pedido em aberto encontrado.</div>
+      )}
     </div>
   );
 };
