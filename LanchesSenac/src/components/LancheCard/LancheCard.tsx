@@ -3,7 +3,7 @@ import { ProductCardProps } from "../../interfaces/ProductCardProps";
 
 const LancheCard: React.FC<ProductCardProps> = ({image, description, whereToGo, cardTitle, price}) => {
     return (
-        <>            
+        <>
             <div  className="card card-extra-styles">
                 <h2 className="card-title">{cardTitle}</h2>
                 <img src={image} className="product-card__image" alt={cardTitle} />

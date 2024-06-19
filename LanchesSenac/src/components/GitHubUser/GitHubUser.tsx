@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchGitHubUser } from "../../services/ClientGitHub";
+import { fetchGitHubUser } from "../../services/GitHubUserService";
 import { GitHubUserProps } from "../../interfaces/GitHubUserProps";
 
 const GitHubUser: React.FC<GitHubUserProps> = ({ username }) => {
