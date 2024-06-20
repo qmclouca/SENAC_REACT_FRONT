@@ -6,6 +6,8 @@ import Cardapio from "./Pages/Cardapio/Cardapio";
 import Pagamento from "./Pages/Pagamento/Pagamento";
 import Formulario from "./components/Formulario/Formulario";
 import Cadastro from "./components/Formulario/Cadastro";
+import QRCodeImage from "./components/QRCode/QRCode";
+import QRCodePage from "./Pages/QRCodePixTest/QRCodePixTest";
 
 
 const App = () => {
@@ -19,7 +21,8 @@ const App = () => {
         <Route path="/pagamento" element={<Pagamento />}/>
         <Route path="/Formulario" element={<Formulario/>}/>
         <Route path="/cadastro" element={<Cadastro/>}/>
-      </Routes>
+        <Route path="/pix" element={<QRCodePage/>}/>
+      </Routes> 
     </Router>
   );
 };
