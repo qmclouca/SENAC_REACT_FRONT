@@ -1,12 +1,11 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import FuncionarioClient from '../../client/FuncionarioClient';
 import './Funcionario.css';
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import FuncionarioDto from '../../dto/FuncionarioDto';
 
-
 const Funcionario = () => {
-
+    const [search, setSearch] = useState<string>('');
     const [funcionarios, setFuncionarios] = useState<FuncionarioDto[]>([]);
 
     useEffect(() => {
@@ -21,16 +20,31 @@ const Funcionario = () => {
         fetchFuncionarios();
     }, []);
 
+    const searchByFuncionario = async (search: string) => {
+        try {
+            const response = await FuncionarioClient.findFuncionariosBySearch(search);
+            setFuncionarios(response);
+        } catch (error) {
+            console.error('Erro ao buscar funcionarios por pesquisa:', error);
+        }
+    };
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        await searchByFuncionario(search);
+    };
 
     return (
         <div className="stack-of-records">
-            <Form>
+            <Form onSubmit={handleSubmit}>
                 <Row>
                     <Col xs="auto">
                         <Form.Control
                             type="text"
                             placeholder="Search"
                             className="mr-sm-2"
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
                         />
                     </Col>
                     <Col xs="auto">
@@ -70,6 +84,6 @@ const Funcionario = () => {
             </Container>
         </div>
     );
-}
+};
 
 export default Funcionario;

@@ -19,6 +19,15 @@ class FuncionarioClient {
             });
     }
 
+    findFuncionariosBySearch(search: String) {
+        return axios.get(`${url}/${search}`)
+        .then((response) => {
+            return response.data;
+        }).catch(error => {
+            throw error;
+        })
+    }
+
 }
 
 export default new FuncionarioClient();
