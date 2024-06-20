@@ -4,40 +4,88 @@ const Cadastro = () => {
     return (
 
         <>
-            <div className="main-cadastro">
-                <div className="left-cadastro">
+            <div className="container">
+                <div className="form-image">
                     <img src="src\assets\SenacXLanches.png" alt="Gon" width="500px" height="500px"></img>
                 </div>
-                <div className="right-cadastro">
-                    <div className="card-cadastro">
-                        <h1>CADASTRO</h1>
-                        <h3>Seja bem vindo</h3>
-                        <div className="textcampo">
-                            <input type="text" className="nome" name="nome" placeholder="Nome"></input>
-                            <input type="text" className="sobrenome" name="sobrenome" placeholder="Sobrenome"></input>
+                <div className="form">
+                    <form action="#">
+                        <div className="form-header">
+                            <div className="title">
+                                <h1>Cadastre-se</h1>
+                            </div>
                         </div>
-                        <div className="textcampo">
-                            <input type="text" name="cpf" placeholder="CPF"></input>
-                            <input type="text" name="email" placeholder="E-mail"></input>
-                            <input type="text" name="telefone" placeholder="Telefone"></input>
+
+                        <div className="input-group">
+                            <div className="input-box">
+                                <label htmlFor="firstname">Primeiro Nome</label>
+                                <input id="firstname" type="text" name="firstname" placeholder="Digite seu primeiro nome" required></input>
+                            </div>
+
+                            <div className="input-box">
+                                <label htmlFor="lastname">Sobrenome</label>
+                                <input id="lastname" type="text" name="lastname" placeholder="Digite seu sobrenome" required></input>
+                            </div>
+                            <div className="input-box">
+                                <label htmlFor="email">E-mail</label>
+                                <input id="email" type="email" name="email" placeholder="Digite seu e-mail" required></input>
+                            </div>
+
+                            <div className="input-box">
+                                <label htmlFor="number">Celular</label>
+                                <input id="number" type="tel" name="number" placeholder="(xx) xxxx-xxxx" required></input>
+                            </div>
+
+                            <div className="input-box">
+                                <label htmlFor="password">Senha</label>
+                                <input id="password" type="password" name="password" placeholder="Digite sua senha" required></input>
+                            </div>
+
+
+                            <div className="input-box">
+                                <label htmlFor="confirmPassword">Confirme sua Senha</label>
+                                <input id="confirmPassword" type="password" name="confirmPassword" placeholder="Digite sua senha novamente" required></input>
+                            </div>
+
+                            <div className="input-box">
+                                <label htmlFor="CPF">CPF</label>
+                                <input id="cpf" type="cpf" name="cpf" placeholder="Digite seu CPF" required></input>
+                            </div>
+
+                            <div className="input-box">
+                                <label htmlFor="CEP">CEP</label>
+                                <input id="cep" type="cep" name="cep" placeholder="Digite seu CEP" required></input>
+                            </div>
+
+                            <div className="input-box">
+                                <label htmlFor="cidade">Cidade</label>
+                                <input id="cidade" type="text" name="cidade" placeholder="Digite sua cidade" required></input>
+                            </div>
+
+                            <div className="input-box">
+                                <label htmlFor="bairro">Bairro</label>
+                                <input id="bairro" type="bairro" name="bairro" placeholder="Digite seu bairro" required></input>
+                            </div>
+
+                            <div className="input-box">
+                                <label htmlFor="endereco">Endereço</label>
+                                <input id="endereco" type="endereco" name="endereco" placeholder="Digite seu Endereço" required></input>
+                            </div>
+
+                            <div className="input-box">
+                                <label htmlFor="complemento">Complemento</label>
+                                <input id="complemento" type="complemento" name="complemento" placeholder="Digite um complemento" required></input>
+                            </div>
+
                         </div>
-                        <div className="textcampo">
-                            <input type="text" name="senha" placeholder="Senha"></input>
-                            <input type="text" name="confirmarsenha" placeholder="Confirmar Senha"></input>
+
+
+                        <div className="continue-button">
+                            <button><a href="#">Continuar</a> </button>
                         </div>
-                        <div className="textcampo">
-                            <input type="text" name="cep" placeholder="CEP"></input>
-                            <input type="text" name="cidade" placeholder="Cidade"></input>
-                            <input type="text" name="bairro" placeholder="Bairro"></input>
-                        </div>
-                        <div className="textcampo">
-                            <input type="text" name="endereco" placeholder="endereco"></input>
-                            <input type="text" name="complemento" placeholder="complemento"></input>
-                        </div>
-                        <button className="btn-cadastro">Cadastro</button>
-                        <label htmlFor="login">Você já tem login?</label>
-                    </div>
+                    </form>
                 </div>
+
 
 
             </div>
@@ -52,5 +100,6 @@ const Cadastro = () => {
 
 
 };
+
 
 export default Cadastro;
