@@ -7,7 +7,7 @@ class FuncionarioClient {
     constructor() {
     }
 
-    listAllFuncionarios() {
+    findPaginationOfFuncionDto() {
         return axios.get(url)
             .then((response) => {
                 console.log(response.data);
@@ -19,8 +19,12 @@ class FuncionarioClient {
             });
     }
 
-    findFuncionariosBySearch(search: String) {
-        return axios.get(`${url}/${search}`)
+    findPaginationOfFuncionariosBySearch(search: String) {
+        return axios.get(`${url}`, {
+            params: {
+                search
+            }
+        })
         .then((response) => {
             return response.data;
         }).catch(error => {
