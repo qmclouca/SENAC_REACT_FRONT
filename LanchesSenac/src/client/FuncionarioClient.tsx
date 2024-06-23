@@ -19,10 +19,11 @@ class FuncionarioClient {
             });
     }
 
-    findPaginationOfFuncionariosBySearch(search: String) {
+    findPaginationOfFuncionariosBySearch(search: String, pageNumber: number) {
         return axios.get(`${url}`, {
             params: {
-                search
+                search,
+                pageNumber
             }
         })
         .then((response) => {
