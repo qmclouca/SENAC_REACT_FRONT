@@ -33,6 +33,15 @@ class FuncionarioClient {
         })
     }
 
+    async deleteFuncionarioById(funcionarioId:number) {
+        await axios.delete(`${url}/${funcionarioId}`)
+        .then((response) => {
+            console.log(response);
+        }).catch(error => {
+            console.log("Erro ao deletar funcionario:", error);
+        })
+    }
+
 }
 
 export default new FuncionarioClient();

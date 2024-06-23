@@ -56,6 +56,17 @@ const Funcionario = () => {
         
     }
 
+    const handleDeletarFuncionario = async (funcionarioId: number) => {
+        try {
+            await FuncionarioClient.deleteFuncionarioById(funcionarioId);
+            console.log(`Funcionario com ID ${funcionarioId} deletado com sucesso.`);
+            let pageNumber = paginaAtual ? paginaAtual.pageable.pageNumber : 0;
+            await searchByFuncionario(search, pageNumber);
+        } catch (error) {
+            console.error('Erro ao deletar funcionario:', error);
+        }
+    }
+
     return (
         <Container fluid="md" style={{ marginTop: '20vh', padding: '4vh 2vw', borderRadius: '5px', backgroundColor: 'gray'}}>
             <Row>
@@ -90,7 +101,10 @@ const Funcionario = () => {
                             <td>{funcionario.id}</td>
                             <td>{funcionario.nome}</td>
                             <td>{funcionario.cargo}</td>
-                            <td>oi</td>
+                            <td colSpan={2} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px'}}>
+                                <Button variant="primary">Editar</Button> 
+                                <Button variant="danger" onClick={() => handleDeletarFuncionario(funcionario.id)}>Deletar</Button>
+                            </td>
                         </tr>
                         ))}
                     </tbody>
