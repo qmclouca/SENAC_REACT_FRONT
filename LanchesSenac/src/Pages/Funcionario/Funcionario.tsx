@@ -5,6 +5,7 @@ import './Funcionario.css';
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import FuncionarioDto from '../../dto/FuncionarioDto';
 import Pagination from '../../interfaces/Pagination';
+import { useNavigate } from 'react-router-dom';
 
 const Funcionario = () => {
     const [search, setSearch] = useState<string>('');
@@ -67,6 +68,11 @@ const Funcionario = () => {
         }
     }
 
+    const handleEditarFuncionario = (funcionarioId: number) => {
+        const navigate = useNavigate();
+        navigate("");
+    }
+
     return (
         <Container fluid="md" style={{ marginTop: '20vh', padding: '4vh 2vw', borderRadius: '5px', backgroundColor: 'gray'}}>
             <Row>
@@ -102,7 +108,7 @@ const Funcionario = () => {
                             <td>{funcionario.nome}</td>
                             <td>{funcionario.cargo}</td>
                             <td colSpan={2} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px'}}>
-                                <Button variant="primary">Editar</Button> 
+                                <Button variant="primary" onClick={() => handleEditarFuncionario(funcionario.id)}>Editar</Button> 
                                 <Button variant="danger" onClick={() => handleDeletarFuncionario(funcionario.id)}>Deletar</Button>
                             </td>
                         </tr>

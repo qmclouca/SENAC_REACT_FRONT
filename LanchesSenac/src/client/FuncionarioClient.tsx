@@ -42,6 +42,15 @@ class FuncionarioClient {
         })
     }
 
+    async getFuncionarioById(funcionarioId:number) {
+        return await axios.get(`${url}/${funcionarioId}`)
+        .then((response) => {
+            return response;
+        }).catch(error => {
+            console.log("Erro ao buscar funcionario", error);
+        })
+    }
+
 }
 
 export default new FuncionarioClient();
