@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url  = "http://localhost:8080/funcionarios";
+const url  = "http://localhost:8080/cargo";
 
 class CargoClient {
     constructor() {

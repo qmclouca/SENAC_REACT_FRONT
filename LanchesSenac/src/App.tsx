@@ -21,7 +21,7 @@ const App = () => {
         <Route path="/paginaFormProduto" element={<PaginaFormProduto/>} />
         <Route path="/Share" element={<Shares/>} />
         <Route path="/Funcionarios/lista" element={<Funcionario/>} />
-        <Route path="/Funcionarios/form" element={<FuncionarioForm/>}/>
+        <Route path="/Funcionarios/form/:id/:formMode" element={<FuncionarioForm/>}/>
       </Routes>
     </Router>
   );

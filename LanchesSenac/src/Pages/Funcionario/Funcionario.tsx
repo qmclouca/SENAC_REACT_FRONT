@@ -5,12 +5,14 @@ import './Funcionario.css';
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import FuncionarioDto from '../../dto/FuncionarioDto';
 import Pagination from '../../interfaces/Pagination';
-import { useNavigate } from 'react-router-dom';
+import { NavLink, Router, useNavigate } from 'react-router-dom';
+import FormModeEnum from '../../enums/FormModeEnum';
 
 const Funcionario = () => {
     const [search, setSearch] = useState<string>('');
     const [funcionarios, setFuncionarios] = useState<FuncionarioDto[]>([]);
     const [paginaAtual, setPaginaAtual] = useState<Pagination>();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchFuncionarios = async () => {
@@ -68,9 +70,13 @@ const Funcionario = () => {
         }
     }
 
-    const handleEditarFuncionario = (funcionarioId: number) => {
-        const navigate = useNavigate();
-        navigate("");
+    const handleClickOnRecord = (funcionarioId: number) => {
+        navigate(`/Funcionarios/form/${funcionarioId}/${FormModeEnum.Visualizacao}`);
+    }
+
+
+    const handleClickinEditarButton = (funcionarioId: number) => {
+        navigate(`/Funcionarios/form/${id}/${FormModeEnum.Edicao}`);
     }
 
     return (
@@ -103,12 +109,15 @@ const Funcionario = () => {
                     </thead>
                     <tbody>
                         {funcionarios.map(funcionario => (
-                        <tr>
+                        <tr onClick={() => handleClickOnRecord(funcionario.id)}>
                             <td>{funcionario.id}</td>
                             <td>{funcionario.nome}</td>
                             <td>{funcionario.cargo}</td>
                             <td colSpan={2} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px'}}>
-                                <Button variant="primary" onClick={() => handleEditarFuncionario(funcionario.id)}>Editar</Button> 
+                            
+                                <Button variant="primary">
+                                    <a onClick={() => handleClickinEditarButton(funcionario.id)}>Editar</a>    
+                                </Button> 
                                 <Button variant="danger" onClick={() => handleDeletarFuncionario(funcionario.id)}>Deletar</Button>
                             </td>
                         </tr>
