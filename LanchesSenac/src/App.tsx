@@ -22,6 +22,7 @@ const App = () => {
         <Route path="/Share" element={<Shares/>} />
         <Route path="/Funcionarios/lista" element={<Funcionario/>} />
         <Route path="/Funcionarios/form/:id/:formMode" element={<FuncionarioForm/>}/>
+        <Route path="/Funcionarios/form/criar" element={<FuncionarioForm/>}/>
       </Routes>
     </Router>
   );

@@ -10,14 +10,35 @@ import FormModeEnum from '../../enums/FormModeEnum';
 const FuncionarioForm = () => {
     const [funcionario, setFuncionario] = useState<FuncionarioDto>();
     const [cargos, setCargos] = useState<string[]>([]);
+    const [loading, setLoading] = useState<boolean>(false);
     const navigate = useNavigate();
 
     let { id, formMode } = useParams();
 
+    function returnEmptyIfAttributeIsNull(attribute: any): any {
+        return attribute != null && attribute != undefined ? attribute : "";
+    }
+
+    function equalsFormModeEnum(value: string):boolean {
+        return (value != null && value != undefined) && (value == FormModeEnum.Edicao || value == FormModeEnum.Visualizacao);
+    }
+
     const getFuncionarioById = async () => {
+        setLoading(true);
         try {
-            const response = await FuncionarioClient.getFuncionarioById(id);
-            setFuncionario(response.data);
+            if (equalsFormModeEnum(formMode)) {
+                const response = await FuncionarioClient.getFuncionarioById(id);
+                setFuncionario(response.data);
+            } else {
+                const emptyFuncionario = ():FuncionarioDto => ({
+                    id: 0,
+                    nome: '',
+                    cargo: '',
+                    cpf: ''
+                });
+                setFuncionario(emptyFuncionario)
+            }
+            setLoading(false);
         } catch (error) {
             console.log("Erro ao buscar funcionario: "+ error)
         }
@@ -45,12 +66,12 @@ const FuncionarioForm = () => {
     return (
         <div>
             <Container fluid="md" style={{ marginTop: '20vh', padding: '4vh 2vw', borderRadius: '5px', backgroundColor: 'gray'}}>
-                {funcionario != null ? (
+                {loading != true ? (
                     <Form>
                         <Row>
                             <label>Nome funcionário</label>
                             <InputGroup className="mb-3">
-                                <Form.Control placeholder="Nome Funcionario" value={funcionario.nome} aria-label="funcionarioNome" disabled={formMode == FormModeEnum.Visualizacao}/>
+                                <Form.Control placeholder="Nome Funcionario" value={funcionario != undefined ? funcionario.nome : ''} aria-label="funcionarioNome" disabled={formMode == FormModeEnum.Visualizacao}/>
                             </InputGroup>
                         </Row>
                         <Row>
@@ -70,7 +91,7 @@ const FuncionarioForm = () => {
                         <Row>
                             <label>Cpf</label>
                             <InputGroup className="mb-3">
-                                <Form.Control placeholder="Cpf" value={funcionario.cpf} aria-label="funcionarioCpf" disabled={formMode == FormModeEnum.Visualizacao}/>
+                                <Form.Control placeholder="Cpf" value={funcionario != null ? funcionario.cpf : ''} aria-label="funcionarioCpf" disabled={formMode == FormModeEnum.Visualizacao}/>
                             </InputGroup>
                         </Row>
                         {formMode != undefined && formMode == FormModeEnum.Edicao ? (

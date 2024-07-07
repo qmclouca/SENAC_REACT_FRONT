@@ -76,24 +76,25 @@ const Funcionario = () => {
 
 
     const handleClickinEditarButton = (funcionarioId: number) => {
-        navigate(`/Funcionarios/form/${id}/${FormModeEnum.Edicao}`);
+        navigate(`/Funcionarios/form/${funcionarioId}/${FormModeEnum.Edicao}`);
     }
 
     return (
-        <Container fluid="md" style={{ marginTop: '20vh', padding: '4vh 2vw', borderRadius: '5px', backgroundColor: 'gray'}}>
+        <Container fluid="md" style={{ marginTop: '20vh', padding: '4vh 2vw', borderRadius: '8px', border: '1px solid black'}}>
             <Row>
                 <Form onSubmit={handleSubmit}>
                     <Row>
-                        <Col xs="auto">
+                        <Col lg={6}>
                             <Form.Control
                                 type="text"
                                 placeholder="Pesquisa por nome de funcionário"
                                 className="mr-sm-2"
                                 value={search}
-                                onChange={(e) => setSearch(e.target.value)}
+                                onChange={(e) => setSearch(e.target.value)
+                                }
                             />
                         </Col>
-                        <Col xs="auto">
+                        <Col lg={6}>
                             <Button type="submit">Pesquisar</Button>
                         </Col>
                     </Row>
@@ -101,19 +102,22 @@ const Funcionario = () => {
             </Row>
             <Row style={{marginTop: '10vh', cursor: 'pointer'}}>
                 {funcionarios != undefined && funcionarios != null ? (
-                <Table hover>
+                <Table hover bordered>
                     <thead>
-                        <th>Id</th>
-                        <th>Nome</th>
-                        <th>Cargo</th>
+                        <tr>
+                            <th style={{ textAlign:'center' }}>Id</th>
+                            <th style={{ textAlign:'center' }}>Nome</th>
+                            <th style={{ textAlign:'center' }}>Cargo</th>
+                            <th style={{ textAlign:'center' }}>Ações</th>
+                        </tr>
                     </thead>
                     <tbody>
                         {funcionarios.map(funcionario => (
                         <tr onClick={() => handleClickOnRecord(funcionario.id)}>
-                            <td>{funcionario.id}</td>
-                            <td>{funcionario.nome}</td>
-                            <td>{funcionario.cargo}</td>
-                            <td colSpan={2} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px'}}>
+                            <td style={{ textAlign:'center' }}>{funcionario.id}</td>
+                            <td style={{ textAlign:'center' }}>{funcionario.nome}</td>
+                            <td style={{ textAlign:'center' }}>{funcionario.cargo}</td>
+                            <td  colSpan={2} style={{display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '10px'}}>
                             
                                 <Button variant="primary">
                                     <a onClick={() => handleClickinEditarButton(funcionario.id)}>Editar</a>    
